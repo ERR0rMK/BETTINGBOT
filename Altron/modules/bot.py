@@ -7,12 +7,12 @@ def BetAI():
     pass
 
 
-@pbot.on(events.NewMessage(pattern="/setbet"))
+@pbot.on_message(filters.command("setbet"))
 async def setbet(event):
     pass
 
 
-@pbot.on(events.NewMessage(pattern="/startbet"))
+@pbot.on_message(filters.command("startbet"))
 async def start(event):
     if event.sender_id == OWNER_ID:
         if event.is_private:

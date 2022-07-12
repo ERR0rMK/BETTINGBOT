@@ -6,15 +6,11 @@ from typing import Optional
 
 from Altron import (
     OWNER_USERNAME,
-    CERT_PATH,
     DONATION_LINK,
     LOGGER,
     OWNER_ID,
-    PORT,
     SUPPORT_CHAT,
     TOKEN,
-    URL,
-    WEBHOOK,
     SUPPORT_CHAT,
     dispatcher,
     StartTime,
@@ -747,19 +743,6 @@ def main():
     dispatcher.add_handler(donate_handler)
 
     dispatcher.add_error_handler(error_callback)
-
-    if WEBHOOK:
-        LOGGER.info("Using webhooks.")
-        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-
-        if CERT_PATH:
-            updater.bot.set_webhook(url=URL + TOKEN, certificate=open(CERT_PATH, "rb"))
-        else:
-            updater.bot.set_webhook(url=URL + TOKEN)
-
-    else:
-        LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
         MK.disconnect()
