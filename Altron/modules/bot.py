@@ -1,6 +1,7 @@
 from time import time, sleep
 from Altron import pbot, OWNER_ID
 from telethon import events
+from pyrogram import filters
 
 
 def BetAI():
